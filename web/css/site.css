@@ -1,0 +1,16 @@
+html,
+body {
+    height: 100%;
+}
+#tweet-map {
+    height: 100%;
+    z-index: 1;
+}
+
+#tweet-map-menu {
+    z-index: 0;
+    position: fixed;
+
+    top: 50px;
+    left: 50px;
+}
