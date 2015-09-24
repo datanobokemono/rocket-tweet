@@ -3,7 +3,7 @@
 return [
     'adminEmail' => 'abdu.galymzhan@gmail.com',
 
-    'googlemap_key' => 'AIzaSyAzGHj1_r_XInfS7rbQRgbzeBFhyU-s8xw',
+    'google_map_key' => 'AIzaSyB2ecqs06a9XvHdz1KqzTYXjPzd0NdYgCw',
     'twitter_api_settings' => [
 		'oauth_access_token' => "1500734358-PlSKboEbavWA8z00nTsBLc7qRIxdVDcZv2tjomb",
 		'oauth_access_token_secret' => "7i3IhaastcXx3Zak0317GzICE0EJYc8EdhZeAyRIMyDGV",

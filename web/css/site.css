@@ -4,13 +4,29 @@ body {
 }
 #tweet-map {
     height: 100%;
+    width: 100%;
     z-index: 1;
 }
 
 #tweet-map-menu {
-    z-index: 0;
+    z-index: 10;
     position: fixed;
 
-    top: 50px;
-    left: 50px;
+    border-radius: 5px;
+    border: 1px solid #DDD;
+    box-shadow: 0 0 3px #555;
+
+    top: 15px;
+    right: 15px;
+
+    padding: 20px;
+
+    background: #eee;
+}
+
+#tweet-map-menu h1 {
+    margin: 0;
+}
+#tweet-map-menu hr {
+    border-top: 1px solid #EEE;
 }
