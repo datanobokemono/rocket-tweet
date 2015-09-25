@@ -63,34 +63,40 @@ class Tweet extends \yii\db\ActiveRecord
     }
 
     /**
-     * 
+     * Забираем из твиттера последние твиты
      */
     public function updateFromTwitter($lat = '43.240342', $lng = '76.915449', $radius = '30km') {
+        // Связь с API
         $tApi = self::getAPI();
 
+        // Используем Twitter Search API
         $url = 'https://api.twitter.com/1.1/search/tweets.json';
         $requestMethod = 'GET';
 
+        // Если в нашей базе уже есть твиты, то получаем твиты со времени его добавления
         $lastId = Tweet::find()->orderBy('id DESC')->limit(1)->all();
         if ($lastId) {
             $lastId = $lastId[0];
             $getfield = "?geocode=$lat,$lng,$radius&since_id=$lastId->tweet_id";
         } else {
+        // Иначе последние 15 твитов
             $getfield = "?geocode=$lat,$lng,$radius";
 
         }
 
+        // Отправляем запрос в твиттер
         $tweets = $tApi->setGetfield($getfield)
             ->buildOauth($url, $requestMethod)
             ->performRequest();
 
         $tweets = json_decode($tweets);
 
+        // Заводим счетчик новых записей
         $newCount = 0;
         foreach ($tweets->statuses as $tweet) {
             # Берем только те твиты, координаты которых мы можем сохранить
             if($tweet->coordinates && !Tweet::find()->where(['tweet_id' => $tweet->id_str])->count()) {
-                $newCount++;
+                // Забиваем новый объект данными из твита
                 $newTweet = new Tweet();
                 $newTweet->attributes = [
                     'tweet_id' => $tweet->id_str,
@@ -106,6 +112,8 @@ class Tweet extends \yii\db\ActiveRecord
                 if(!$newTweet->save()) {
                     return false;
                 }
+                // Увеличиваем счетчик
+                $newCount++;
             }
         }
 

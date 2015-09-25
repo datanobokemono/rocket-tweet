@@ -1,5 +1,6 @@
 # rocket-tweet
-Твиты на карте
+Твиты на карте с возможностью авто-обновления.
+![Rocket Tweet screenshot](http://s11.postimg.org/5j1dhj9lv/rtweets.png)
 
 ## Установка
 После клонирования репозитория, запустите команду ```composer install``` для Windows, либо ```php composer.phar install``` для других платформ.

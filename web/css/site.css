@@ -2,31 +2,122 @@ html,
 body {
     height: 100%;
 }
+/* Карта */
 #tweet-map {
     height: 100%;
     width: 100%;
     z-index: 1;
 }
 
-#tweet-map-menu {
+/* Панель управления */
+.tweet-menu {
     z-index: 10;
     position: fixed;
-
-    border-radius: 5px;
-    border: 1px solid #DDD;
-    box-shadow: 0 0 3px #555;
 
     top: 15px;
     right: 15px;
 
-    padding: 20px;
 
     background: #eee;
 }
+/* Шапка */
+.tweet-menu .tweet-menu-header {
+    padding: 12px 20px;
+    font-size: 36px;
+    height: 100px;
 
-#tweet-map-menu h1 {
-    margin: 0;
+    background-color: #EF4323;
+    color: #FFF;
 }
-#tweet-map-menu hr {
-    border-top: 1px solid #EEE;
+.tweet-menu .tweet-menu-header .glyphicon{
+    position: relative;
+    font-size: 52px;
+    top: 10px;
 }
+
+/* Список контролов */
+.tweet-menu .menu-list {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+}
+.tweet-menu .menu-list .list-item {
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border-bottom: 1px solid #DDD;
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+/* + Кнопка обновления */
+.tweet-menu .menu-list .list-item .update-tweets {
+    position:   absolute;
+    padding:    0px 10px;
+    width:      200px;
+    right:      0px;
+    top:        0px;
+    
+    background-color: #4BC6B9;
+    
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+    color: #FFF;
+}
+.tweet-menu .menu-list .list-item .update-tweets:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #1B998B;
+}
+/* + Кнопка обновления - активно состояние авто-обновления */
+.tweet-menu .menu-list .list-item .update-tweets .reload-progress {
+    position: absolute;
+    height: 40px;
+    width: 0%;
+    z-index: 10;
+    left: 0;
+    top: 0;
+
+    background-color: #1B998B;
+}
+.tweet-menu .menu-list .list-item .update-tweets .text {
+    position: relative;
+    z-index: 11;
+}
+.auto-reload {
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    margin-right: 3px !important;
+}
+/* - Кнопка обновления - активно состояние авто-обновления */
+
+/* + Анимация для обновления */
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+/* - Анимация для обновления */
+
+.tweet-menu .menu-list .list-item .update-tweets.loading {
+    background-color: #F9C80E !important;
+    cursor: wait !important;
+}
+
+.tweet-menu .menu-list .list-item .update-tweets.loading .glyphicon{
+    -webkit-animation:spin 2s linear infinite;
+    -moz-animation:spin 2s linear infinite;
+    animation:spin 2s linear infinite;
+}
+/* - Кнопка обновления */
+
+
+
+.list-item.tweet-count, .list-item.no-tweets-found {
+    height: 30px !important;
+    line-height: 30px !important;
+    font-size: 10px !important;
+    color: #EEE;
+    background-color: #333;
+}
+
